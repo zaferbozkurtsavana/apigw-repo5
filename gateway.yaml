@@ -1,0 +1,42 @@
+apiVersion: "xbank/v1beta1"
+kind: "Gateway"
+metadata:
+  name: "repo5"
+  version: "v1"
+  minorVersion: "1.0"
+  teamName: "B-Team"
+spec:
+  muhtar: "1.6.6"
+  encumen: "1.2.3"
+  contextPath: "/test"
+  operations:
+  - name: "test"
+    description: "zafer"
+    httpVerb: "GET"
+    route: "/path"
+    target:
+      httpVerb: "GET"
+      host: "test"
+      timeoutInSeconds: 12323
+      transformationHandledExceptionCodes:
+      - 304
+      - 303
+      - 400
+      route:
+        type: "header"
+        value: "test"
+    transformation:
+      request:
+        filepath: "/test/test/transformation/request.mjs"
+        timeoutInMilliSeconds: 3000
+      response:
+        filepath: "/test/test/transformation/response.mjs"
+        timeoutInMilliSeconds: 3000
+    validation:
+      request:
+        filepath: "/test/test/validation/request.mjs"
+      response:
+        filepath: "/test/test/validation/response.mjs"
+  transformationRepo:
+    url: "https://github.com/zaferbozkurtsavana/apigw-repo5"
+    tag: "v1.0.0"
