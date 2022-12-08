@@ -1,41 +1,42 @@
 apiVersion: "xbank/v1beta1"
-kind: "Gateway"
+kind: "Gatewayt"
 metadata:
   name: "repo5"
-  version: "v2"
+  version: "v3"
   minorVersion: "0.0"
-  teamName: "team"
+  teamName: "B-Team"
 spec:
   muhtar: "1.6.6"
   encumen: "1.2.3"
-  contextPath: "/testt"
+  contextPath: "/repo5-path"
   operations:
-  - name: "zafer"
-    description: "test"
+  - name: "alis-gidis"
+    description: "getAlisgidisCustomerData"
     httpVerb: "POST"
-    route: "/test"
+    route: "/get-alisgidis-customer-data"
     target:
-      httpVerb: "GET"
-      host: "test"
-      timeoutInSeconds: 1233
+      httpVerb: "POST"
+      host: "core-nonprelive"
+      timeoutInSeconds: 120
       transformationHandledExceptionCodes:
-      - 303
-      - 307
+      - "300"
+      - "500"
+      - 400
       route:
         type: "header"
-        value: "test"
+        value: "RBF_GET_ALISGIDIS_CUSTOMER_DATA"
     transformation:
       request:
-        filepath: "/testt/zafer/transformation/request.mjs"
-        timeoutInMilliSeconds: 3000
+        filepath: "/repo5-path/alis-gidis/transformation/request.mjs"
+        timeoutInMilliSeconds: 4000
       response:
-        filepath: "/testt/zafer/transformation/response.mjs"
-        timeoutInMilliSeconds: 3000
+        filepath: "/repo5-path/alis-gidis/transformation/response.mjs"
+        timeoutInMilliSeconds: 4000
     validation:
       request:
-        filepath: "/testt/zafer/validation/request.mjs"
+        filepath: "/repo5-path/alis-gidis/validation/request.mjs"
       response:
-        filepath: "/testt/zafer/validation/response.mjs"
+        filepath: "/repo5-path/alis-gidis/validation/response.mjs"
   transformationRepo:
     url: "https://github.com/zaferbozkurtsavana/apigw-repo5"
-    tag: "v1.0.1"
+    tag: "v1.0.2"
